@@ -1,0 +1,14 @@
+' DATA/HORA AUTOMÁTICA NA ABA BIPAGEM
+' 1) Salve o arquivo como .xlsm (Pasta de Trabalho Habilitada para Macro)
+' 2) Clique com o botão direito na aba "Bipagem" > Exibir Código
+' 3) Cole o código abaixo e salve
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+    If Target.Cells.Count = 1 And Target.Column = 2 And Target.Row > 1 Then
+        If Target.Value <> "" Then
+            Application.EnableEvents = False
+            Cells(Target.Row, 4).Value = Now
+            Application.EnableEvents = True
+        End If
+    End If
+End Sub

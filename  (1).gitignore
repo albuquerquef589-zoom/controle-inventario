@@ -1,0 +1,5 @@
+# Nunca subir arquivos reais da empresa
+PREDIO_3*.xlsx
+*real*.xlsx
+*confidencial*
+~$*.xlsx

@@ -1,0 +1,14 @@
+// ENVIO DIRETO PARA O GOOGLE SHEETS (opcional)
+// 1) Importe o inventario_modelo.xlsx no Google Sheets
+// 2) Na aba "Bipagem", selecione as colunas A:B > Formatar > Número > Texto simples
+// 3) Extensões > Apps Script, cole o código abaixo e salve
+// 4) Implantar > Nova implantação > Aplicativo da Web
+//    Executar como: Eu | Quem tem acesso: Qualquer pessoa > Implantar
+// 5) Copie a URL (termina em /exec) e cole no app, em "Envio direto"
+
+function doPost(e) {
+  var d = JSON.parse(e.postData.contents);
+  SpreadsheetApp.getActive().getSheetByName('Bipagem')
+    .appendRow([d.posicao, d.material, d.responsavel, d.datahora]);
+  return ContentService.createTextOutput('ok');
+}
